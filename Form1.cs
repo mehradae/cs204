@@ -92,5 +92,21 @@ namespace CS204
             throw new Exception("No network adapters with an IPv4 address in the system!");
         }
 
+        private void ReducePing()
+        {
+            //const string userRoot = "HKEY_LOCAL_MACHINE";
+            //const string subkey = "RegistrySetValueExample";
+            //const string keyName = userRoot + "\\" + subkey;
+            RegistryKey mykey = Registry.CurrentUser
+                .OpenSubKey(@"Softwar\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile", true);
+
+            if (mykey != null)
+            {
+                mykey.SetValue("NetworkThrottlingIndex", "FFFFFFFF", RegistryValueKind.DWord);
+                mykey.Close();
+            }
+
+        }
+
     }
 }
