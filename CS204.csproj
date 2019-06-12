@@ -79,6 +79,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="TCP_no_delay.cs" />
+    <Compile Include="TCPackFrequency.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
