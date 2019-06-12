@@ -55,7 +55,14 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="GlobalMaxTcpWindowSize.cs" />
     <Compile Include="IRP_Stack_Size.cs" />
+    <Compile Include="LocalPriority.cs" />
+    <Compile Include="MaxConnectBacklog.cs" />
+    <Compile Include="MaxFreeTcbs.cs" />
+    <Compile Include="MaxUserPort.cs" />
+    <Compile Include="NetworkThrottlingIndex.cs" />
+    <Compile Include="NonBestEffortLimit.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -80,6 +87,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Tcp1323Opts.cs" />
+    <Compile Include="TcpTimedWaitDelay.cs" />
     <Compile Include="TCP_no_delay.cs" />
     <Compile Include="TCPackFrequency.cs" />
   </ItemGroup>

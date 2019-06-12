@@ -101,26 +101,26 @@ namespace CS204
             throw new Exception("No network adapters with an IPv4 address in the system!");
         }
 
-        private void ReducePing()
-        {
-            //const string userRoot = "HKEY_LOCAL_MACHINE";
-            //const string subkey = "RegistrySetValueExample";
-            //const string keyName = userRoot + "\\" + subkey;
-            //string[] path = Registry.LocalMachine.;
-            using (var hklm = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64))
-            using (RegistryKey mykey = hklm.OpenSubKey(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile", true))
-            {
-                if (mykey != null)
-                {
-                    MessageBox.Show("Its working");
-                    mykey.SetValue("NetworkThrottlingIndex", Int32.MaxValue, RegistryValueKind.DWord);
-                    mykey.Close();
-                }
-            }
-
-               
-
-        }
+//        private void ReducePing()
+//        {
+//            //const string userRoot = "HKEY_LOCAL_MACHINE";
+//            //const string subkey = "RegistrySetValueExample";
+//            //const string keyName = userRoot + "\\" + subkey;
+//            //string[] path = Registry.LocalMachine.;
+//            using (var hklm = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64))
+//            using (RegistryKey mykey = hklm.OpenSubKey(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile", true))
+//            {
+//                if (mykey != null)
+//                {
+//                    MessageBox.Show("Its working");
+//                    mykey.SetValue("NetworkThrottlingIndex", Int32.MaxValue, RegistryValueKind.DWord);
+//                    mykey.Close();
+//                }
+//            }
+//
+//               
+//
+//        }
 
         private void OptionList_SelectedIndexChanged(object sender, EventArgs e)
         {
