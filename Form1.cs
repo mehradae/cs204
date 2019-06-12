@@ -19,6 +19,7 @@ namespace CS204
         public MainScreen()
         {
             InitializeComponent();
+            IpLable.Text = GetLocalIPAddress();
             PingHost("4.2.2.4");
         }
 
@@ -41,20 +42,33 @@ namespace CS204
             }
         }
 
-        public static bool PingHost(string nameOrAddress)
+        public void PingHost(string host)
         {
-            bool pingable = false;
+
             Ping pinger = null;
 
             try
             {
                 pinger = new Ping();
-                PingReply reply = pinger.Send(nameOrAddress);
-                pingable = reply.Status == IPStatus.Success;
+                long totalTime = 0;
+                int counter = 0;
+                for (int i = 0; i < 10; i++)
+                {
+                    PingReply reply = pinger.Send(host, 120);
+                    if (reply.Status == IPStatus.Success)
+                    {
+                        totalTime += reply.RoundtripTime;
+                    }
+                    else
+                        counter++;
+                }
+                OldPingTimelbl.Text = (totalTime / 10).ToString() + " ms";
+                OldDropPcklbl.Text = counter.ToString();
             }
-            catch (PingException)
+            catch (PingException er)
             {
-                // Discard PingExceptions and return false;
+                OldPingTimelbl.Text = "An Error Occurred!";
+                MessageBox.Show("Error", er.Message);
             }
             finally
             {
@@ -63,8 +77,6 @@ namespace CS204
                     pinger.Dispose();
                 }
             }
-
-            return pingable;
         }
 
         public static string GetLocalIPAddress()

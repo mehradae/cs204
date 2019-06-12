@@ -45,6 +45,10 @@
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.label7 = new System.Windows.Forms.Label();
             this.IpLable = new System.Windows.Forms.Label();
+            this.OldPingTimelbl = new System.Windows.Forms.Label();
+            this.OldDropPcklbl = new System.Windows.Forms.Label();
+            this.NewDropPcklbl = new System.Windows.Forms.Label();
+            this.NewPingtimelbl = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -112,6 +116,8 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.NewPingtimelbl);
+            this.groupBox4.Controls.Add(this.NewDropPcklbl);
             this.groupBox4.Controls.Add(this.label6);
             this.groupBox4.Controls.Add(this.label4);
             this.groupBox4.Controls.Add(this.label2);
@@ -136,9 +142,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(6, 58);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(48, 13);
+            this.label4.Size = new System.Drawing.Size(87, 13);
             this.label4.TabIndex = 2;
-            this.label4.Text = "Latency:";
+            this.label4.Text = "Droped Packets:";
             // 
             // label2
             // 
@@ -151,6 +157,8 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.OldDropPcklbl);
+            this.groupBox3.Controls.Add(this.OldPingTimelbl);
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.label1);
@@ -175,9 +183,9 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(6, 58);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(48, 13);
+            this.label3.Size = new System.Drawing.Size(87, 13);
             this.label3.TabIndex = 1;
-            this.label3.Text = "Latency:";
+            this.label3.Text = "Droped Packets:";
             // 
             // label1
             // 
@@ -227,6 +235,42 @@
             this.IpLable.Size = new System.Drawing.Size(0, 13);
             this.IpLable.TabIndex = 3;
             // 
+            // OldPingTimelbl
+            // 
+            this.OldPingTimelbl.AutoSize = true;
+            this.OldPingTimelbl.Location = new System.Drawing.Point(107, 31);
+            this.OldPingTimelbl.Name = "OldPingTimelbl";
+            this.OldPingTimelbl.Size = new System.Drawing.Size(57, 13);
+            this.OldPingTimelbl.TabIndex = 3;
+            this.OldPingTimelbl.Text = "Loading ...";
+            // 
+            // OldDropPcklbl
+            // 
+            this.OldDropPcklbl.AutoSize = true;
+            this.OldDropPcklbl.Location = new System.Drawing.Point(107, 58);
+            this.OldDropPcklbl.Name = "OldDropPcklbl";
+            this.OldDropPcklbl.Size = new System.Drawing.Size(13, 13);
+            this.OldDropPcklbl.TabIndex = 4;
+            this.OldDropPcklbl.Text = "0";
+            // 
+            // NewDropPcklbl
+            // 
+            this.NewDropPcklbl.AutoSize = true;
+            this.NewDropPcklbl.Location = new System.Drawing.Point(131, 58);
+            this.NewDropPcklbl.Name = "NewDropPcklbl";
+            this.NewDropPcklbl.Size = new System.Drawing.Size(13, 13);
+            this.NewDropPcklbl.TabIndex = 5;
+            this.NewDropPcklbl.Text = "0";
+            // 
+            // NewPingtimelbl
+            // 
+            this.NewPingtimelbl.AutoSize = true;
+            this.NewPingtimelbl.Location = new System.Drawing.Point(131, 31);
+            this.NewPingtimelbl.Name = "NewPingtimelbl";
+            this.NewPingtimelbl.Size = new System.Drawing.Size(57, 13);
+            this.NewPingtimelbl.TabIndex = 6;
+            this.NewPingtimelbl.Text = "Loading ...";
+            // 
             // MainScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -270,6 +314,10 @@
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Label IpLable;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label OldPingTimelbl;
+        private System.Windows.Forms.Label NewPingtimelbl;
+        private System.Windows.Forms.Label NewDropPcklbl;
+        private System.Windows.Forms.Label OldDropPcklbl;
     }
 }
 
