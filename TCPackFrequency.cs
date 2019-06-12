@@ -3,6 +3,7 @@ using Microsoft.Win32;
 
 public class TCPackFrequency
 
+
 {
     String path = "SYSTEM\\CurrentControlSet\\Services\\Tcpip\\Parameters\\Interfaces\\{1905e6b4-2e49-4701-aeea-52809bdc9f49}";
 
