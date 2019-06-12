@@ -19,7 +19,7 @@ namespace CS204
         public MainScreen()
         {
             InitializeComponent();
-            PingHost('4.2.2.4')
+            PingHost("4.2.2.4");
         }
 
         private void BtnApply_Click(object sender, EventArgs e)
