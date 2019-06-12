@@ -25,14 +25,13 @@ namespace CS204
 
         private void BtnApply_Click(object sender, EventArgs e)
         {
-            //RegistryKey key = Registry.CurrentUser
-            //    .OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Run", true);
-
-
+            
             try
             {
-                ReducePing();
-                //MessageBox.Show("SUccess");
+                progressBar1.Value = 10;
+                new TCP_no_delay().Remove();
+                progressBar1.Value = 20;
+                //ReducePing();
             }
             catch (Exception er)
             {
@@ -115,13 +114,19 @@ namespace CS204
                 {
                     MessageBox.Show("Its working");
                     mykey.SetValue("NetworkThrottlingIndex", Int32.MaxValue, RegistryValueKind.DWord);
-                    mykey.Flush();
                     mykey.Close();
                 }
             }
 
                
 
+        }
+
+        private void OptionList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (OptionList.GetItemChecked(1)) {
+
+            }
         }
     }
 }

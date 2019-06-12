@@ -9,7 +9,7 @@ namespace CS204
     static class Program
     {
         /// <summary>
-        /// The main entry point for the application.
+        /// This Application helps you get a better ping results.
         /// </summary>
         [STAThread]
         static void Main()

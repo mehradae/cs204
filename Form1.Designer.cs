@@ -33,22 +33,23 @@
             this.rdAuto = new System.Windows.Forms.RadioButton();
             this.btnApply = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.IpLable = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.NewPingtimelbl = new System.Windows.Forms.Label();
+            this.NewDropPcklbl = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.OldDropPcklbl = new System.Windows.Forms.Label();
+            this.OldPingTimelbl = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.OptionList = new System.Windows.Forms.CheckedListBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.IpLable = new System.Windows.Forms.Label();
-            this.OldPingTimelbl = new System.Windows.Forms.Label();
-            this.OldDropPcklbl = new System.Windows.Forms.Label();
-            this.NewDropPcklbl = new System.Windows.Forms.Label();
-            this.NewPingtimelbl = new System.Windows.Forms.Label();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -59,9 +60,10 @@
             // rdMan
             // 
             this.rdMan.AutoSize = true;
-            this.rdMan.Location = new System.Drawing.Point(15, 19);
+            this.rdMan.Location = new System.Drawing.Point(30, 37);
+            this.rdMan.Margin = new System.Windows.Forms.Padding(6);
             this.rdMan.Name = "rdMan";
-            this.rdMan.Size = new System.Drawing.Size(60, 17);
+            this.rdMan.Size = new System.Drawing.Size(114, 29);
             this.rdMan.TabIndex = 0;
             this.rdMan.TabStop = true;
             this.rdMan.Text = "Manual";
@@ -72,9 +74,11 @@
             // 
             this.groupBox1.Controls.Add(this.rdAuto);
             this.groupBox1.Controls.Add(this.rdMan);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(24, 23);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(110, 66);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(6);
+            this.groupBox1.Size = new System.Drawing.Size(220, 127);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Options";
@@ -82,9 +86,10 @@
             // rdAuto
             // 
             this.rdAuto.AutoSize = true;
-            this.rdAuto.Location = new System.Drawing.Point(15, 43);
+            this.rdAuto.Location = new System.Drawing.Point(30, 83);
+            this.rdAuto.Margin = new System.Windows.Forms.Padding(6);
             this.rdAuto.Name = "rdAuto";
-            this.rdAuto.Size = new System.Drawing.Size(72, 17);
+            this.rdAuto.Size = new System.Drawing.Size(138, 29);
             this.rdAuto.TabIndex = 1;
             this.rdAuto.TabStop = true;
             this.rdAuto.Text = "Automatic";
@@ -93,9 +98,10 @@
             // btnApply
             // 
             this.btnApply.Enabled = false;
-            this.btnApply.Location = new System.Drawing.Point(496, 31);
+            this.btnApply.Location = new System.Drawing.Point(992, 60);
+            this.btnApply.Margin = new System.Windows.Forms.Padding(6);
             this.btnApply.Name = "btnApply";
-            this.btnApply.Size = new System.Drawing.Size(75, 23);
+            this.btnApply.Size = new System.Drawing.Size(150, 44);
             this.btnApply.TabIndex = 3;
             this.btnApply.Text = "Apply";
             this.btnApply.UseVisualStyleBackColor = true;
@@ -107,12 +113,33 @@
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.groupBox4);
             this.groupBox2.Controls.Add(this.groupBox3);
-            this.groupBox2.Location = new System.Drawing.Point(12, 172);
+            this.groupBox2.Location = new System.Drawing.Point(24, 331);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(6);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(383, 266);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(6);
+            this.groupBox2.Size = new System.Drawing.Size(766, 512);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Ping Results";
+            // 
+            // IpLable
+            // 
+            this.IpLable.AutoSize = true;
+            this.IpLable.Location = new System.Drawing.Point(496, 60);
+            this.IpLable.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.IpLable.Name = "IpLable";
+            this.IpLable.Size = new System.Drawing.Size(0, 25);
+            this.IpLable.TabIndex = 3;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(22, 60);
+            this.label7.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(172, 25);
+            this.label7.TabIndex = 2;
+            this.label7.Text = "Your IP address:";
             // 
             // groupBox4
             // 
@@ -121,37 +148,62 @@
             this.groupBox4.Controls.Add(this.label6);
             this.groupBox4.Controls.Add(this.label4);
             this.groupBox4.Controls.Add(this.label2);
-            this.groupBox4.Location = new System.Drawing.Point(183, 50);
+            this.groupBox4.Location = new System.Drawing.Point(366, 96);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(6);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(194, 210);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(6);
+            this.groupBox4.Size = new System.Drawing.Size(388, 404);
             this.groupBox4.TabIndex = 1;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "After";
             // 
+            // NewPingtimelbl
+            // 
+            this.NewPingtimelbl.AutoSize = true;
+            this.NewPingtimelbl.Location = new System.Drawing.Point(262, 60);
+            this.NewPingtimelbl.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.NewPingtimelbl.Name = "NewPingtimelbl";
+            this.NewPingtimelbl.Size = new System.Drawing.Size(113, 25);
+            this.NewPingtimelbl.TabIndex = 6;
+            this.NewPingtimelbl.Text = "Loading ...";
+            // 
+            // NewDropPcklbl
+            // 
+            this.NewDropPcklbl.AutoSize = true;
+            this.NewDropPcklbl.Location = new System.Drawing.Point(262, 112);
+            this.NewDropPcklbl.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.NewDropPcklbl.Name = "NewDropPcklbl";
+            this.NewDropPcklbl.Size = new System.Drawing.Size(24, 25);
+            this.NewDropPcklbl.TabIndex = 5;
+            this.NewDropPcklbl.Text = "0";
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 84);
+            this.label6.Location = new System.Drawing.Point(12, 162);
+            this.label6.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(35, 13);
+            this.label6.Size = new System.Drawing.Size(71, 25);
             this.label6.TabIndex = 3;
             this.label6.Text = "Jitter: ";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 58);
+            this.label4.Location = new System.Drawing.Point(12, 112);
+            this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(87, 13);
+            this.label4.Size = new System.Drawing.Size(171, 25);
             this.label4.TabIndex = 2;
             this.label4.Text = "Droped Packets:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 31);
+            this.label2.Location = new System.Drawing.Point(12, 60);
+            this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(34, 13);
+            this.label2.Size = new System.Drawing.Size(67, 25);
             this.label2.TabIndex = 1;
             this.label2.Text = "Ping: ";
             // 
@@ -162,37 +214,62 @@
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.label1);
-            this.groupBox3.Location = new System.Drawing.Point(6, 50);
+            this.groupBox3.Location = new System.Drawing.Point(12, 96);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(6);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(170, 210);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(6);
+            this.groupBox3.Size = new System.Drawing.Size(340, 404);
             this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Before";
             // 
+            // OldDropPcklbl
+            // 
+            this.OldDropPcklbl.AutoSize = true;
+            this.OldDropPcklbl.Location = new System.Drawing.Point(214, 112);
+            this.OldDropPcklbl.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.OldDropPcklbl.Name = "OldDropPcklbl";
+            this.OldDropPcklbl.Size = new System.Drawing.Size(24, 25);
+            this.OldDropPcklbl.TabIndex = 4;
+            this.OldDropPcklbl.Text = "0";
+            // 
+            // OldPingTimelbl
+            // 
+            this.OldPingTimelbl.AutoSize = true;
+            this.OldPingTimelbl.Location = new System.Drawing.Point(214, 60);
+            this.OldPingTimelbl.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.OldPingTimelbl.Name = "OldPingTimelbl";
+            this.OldPingTimelbl.Size = new System.Drawing.Size(113, 25);
+            this.OldPingTimelbl.TabIndex = 3;
+            this.OldPingTimelbl.Text = "Loading ...";
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 84);
+            this.label5.Location = new System.Drawing.Point(12, 162);
+            this.label5.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(35, 13);
+            this.label5.Size = new System.Drawing.Size(71, 25);
             this.label5.TabIndex = 2;
             this.label5.Text = "Jitter: ";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 58);
+            this.label3.Location = new System.Drawing.Point(12, 112);
+            this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(87, 13);
+            this.label3.Size = new System.Drawing.Size(171, 25);
             this.label3.TabIndex = 1;
             this.label3.Text = "Droped Packets:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 31);
+            this.label1.Location = new System.Drawing.Point(12, 60);
+            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(34, 13);
+            this.label1.Size = new System.Drawing.Size(67, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "Ping: ";
             // 
@@ -200,86 +277,46 @@
             // 
             this.OptionList.FormattingEnabled = true;
             this.OptionList.Items.AddRange(new object[] {
-            "Option 1",
+            "TCP No Delay",
             "Option 2",
             "Option 3"});
-            this.OptionList.Location = new System.Drawing.Point(6, 17);
+            this.OptionList.Location = new System.Drawing.Point(12, 33);
+            this.OptionList.Margin = new System.Windows.Forms.Padding(6);
             this.OptionList.Name = "OptionList";
-            this.OptionList.Size = new System.Drawing.Size(227, 109);
+            this.OptionList.Size = new System.Drawing.Size(450, 200);
             this.OptionList.TabIndex = 5;
+            this.OptionList.SelectedIndexChanged += new System.EventHandler(this.OptionList_SelectedIndexChanged);
             // 
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.OptionList);
-            this.groupBox5.Location = new System.Drawing.Point(150, 12);
+            this.groupBox5.Location = new System.Drawing.Point(300, 23);
+            this.groupBox5.Margin = new System.Windows.Forms.Padding(6);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(239, 139);
+            this.groupBox5.Padding = new System.Windows.Forms.Padding(6);
+            this.groupBox5.Size = new System.Drawing.Size(478, 267);
             this.groupBox5.TabIndex = 6;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Options";
             // 
-            // label7
+            // progressBar1
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(11, 31);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(85, 13);
-            this.label7.TabIndex = 2;
-            this.label7.Text = "Your IP address:";
-            // 
-            // IpLable
-            // 
-            this.IpLable.AutoSize = true;
-            this.IpLable.Location = new System.Drawing.Point(248, 31);
-            this.IpLable.Name = "IpLable";
-            this.IpLable.Size = new System.Drawing.Size(0, 13);
-            this.IpLable.TabIndex = 3;
-            // 
-            // OldPingTimelbl
-            // 
-            this.OldPingTimelbl.AutoSize = true;
-            this.OldPingTimelbl.Location = new System.Drawing.Point(107, 31);
-            this.OldPingTimelbl.Name = "OldPingTimelbl";
-            this.OldPingTimelbl.Size = new System.Drawing.Size(57, 13);
-            this.OldPingTimelbl.TabIndex = 3;
-            this.OldPingTimelbl.Text = "Loading ...";
-            // 
-            // OldDropPcklbl
-            // 
-            this.OldDropPcklbl.AutoSize = true;
-            this.OldDropPcklbl.Location = new System.Drawing.Point(107, 58);
-            this.OldDropPcklbl.Name = "OldDropPcklbl";
-            this.OldDropPcklbl.Size = new System.Drawing.Size(13, 13);
-            this.OldDropPcklbl.TabIndex = 4;
-            this.OldDropPcklbl.Text = "0";
-            // 
-            // NewDropPcklbl
-            // 
-            this.NewDropPcklbl.AutoSize = true;
-            this.NewDropPcklbl.Location = new System.Drawing.Point(131, 58);
-            this.NewDropPcklbl.Name = "NewDropPcklbl";
-            this.NewDropPcklbl.Size = new System.Drawing.Size(13, 13);
-            this.NewDropPcklbl.TabIndex = 5;
-            this.NewDropPcklbl.Text = "0";
-            // 
-            // NewPingtimelbl
-            // 
-            this.NewPingtimelbl.AutoSize = true;
-            this.NewPingtimelbl.Location = new System.Drawing.Point(131, 31);
-            this.NewPingtimelbl.Name = "NewPingtimelbl";
-            this.NewPingtimelbl.Size = new System.Drawing.Size(57, 13);
-            this.NewPingtimelbl.TabIndex = 6;
-            this.NewPingtimelbl.Text = "Loading ...";
+            this.progressBar1.Location = new System.Drawing.Point(799, 348);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(548, 47);
+            this.progressBar1.TabIndex = 7;
             // 
             // MainScreen
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1600, 865);
+            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnApply);
             this.Controls.Add(this.groupBox1);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "MainScreen";
             this.Text = "Better Connection";
             this.groupBox1.ResumeLayout(false);
@@ -318,6 +355,7 @@
         private System.Windows.Forms.Label NewPingtimelbl;
         private System.Windows.Forms.Label NewDropPcklbl;
         private System.Windows.Forms.Label OldDropPcklbl;
+        private System.Windows.Forms.ProgressBar progressBar1;
     }
 }
 
