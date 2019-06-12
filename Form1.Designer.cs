@@ -43,6 +43,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.OptionList = new System.Windows.Forms.CheckedListBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.IpLable = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -97,6 +99,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.IpLable);
+            this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.groupBox4);
             this.groupBox2.Controls.Add(this.groupBox3);
             this.groupBox2.Location = new System.Drawing.Point(12, 172);
@@ -111,9 +115,9 @@
             this.groupBox4.Controls.Add(this.label6);
             this.groupBox4.Controls.Add(this.label4);
             this.groupBox4.Controls.Add(this.label2);
-            this.groupBox4.Location = new System.Drawing.Point(183, 19);
+            this.groupBox4.Location = new System.Drawing.Point(183, 50);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(194, 241);
+            this.groupBox4.Size = new System.Drawing.Size(194, 210);
             this.groupBox4.TabIndex = 1;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "After";
@@ -150,9 +154,9 @@
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.label1);
-            this.groupBox3.Location = new System.Drawing.Point(6, 19);
+            this.groupBox3.Location = new System.Drawing.Point(6, 50);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(170, 241);
+            this.groupBox3.Size = new System.Drawing.Size(170, 210);
             this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Before";
@@ -206,6 +210,23 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Options";
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(11, 31);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(85, 13);
+            this.label7.TabIndex = 2;
+            this.label7.Text = "Your IP address:";
+            // 
+            // IpLable
+            // 
+            this.IpLable.AutoSize = true;
+            this.IpLable.Location = new System.Drawing.Point(248, 31);
+            this.IpLable.Name = "IpLable";
+            this.IpLable.Size = new System.Drawing.Size(0, 13);
+            this.IpLable.TabIndex = 3;
+            // 
             // MainScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -220,6 +241,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -246,6 +268,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckedListBox OptionList;
         private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Label IpLable;
+        private System.Windows.Forms.Label label7;
     }
 }
 
