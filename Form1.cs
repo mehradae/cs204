@@ -1,21 +1,14 @@
-﻿using Microsoft.Win32;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
+﻿using System;
 using System.Net;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CS204
 {
     public partial class MainScreen : Form
     {
+        bool changed = false;
         public MainScreen()
         {
             InitializeComponent();
@@ -25,18 +18,128 @@ namespace CS204
 
         private void BtnApply_Click(object sender, EventArgs e)
         {
-            
-            try
-            {
-                progressBar1.Value = 10;
-                new TCP_no_delay().Remove();
-                progressBar1.Value = 20;
-                //ReducePing();
+
+            foreach (object item in OptionList.Items){
+
+                EffectApply(item);
+
+                
             }
-            catch (Exception er)
+
+            //try
+            //{
+            //    progressBar1.Value = 10;
+            //    new TCP_no_delay().Remove();
+            //    progressBar1.Value = 20;
+            //    ReducePing();
+            //}
+            //catch (Exception er)
+            //{
+            //    MessageBox.Show(er.Message);
+            //}
+        }
+
+        private void EffectApply(object item)
+        {
+            if (OptionList.CheckedItems.Contains(item))
             {
-                MessageBox.Show(er.Message);
+                MessageBox.Show(item.ToString());
+                switch (item)
+                {
+                    case "TCP No Delay":
+                        TCP_no_delay tCP_No_Delay = new TCP_no_delay();
+                        if (OptionList.CheckedItems.Contains(item))
+                            tCP_No_Delay.Add();
+                        else
+                            tCP_No_Delay.Remove();
+                        break;
+                    case "TCP Window Size":
+                        GlobalMaxTcpWindowSize globalMaxTcpWindow = new GlobalMaxTcpWindowSize();
+                        if (OptionList.CheckedItems.Contains(item))
+                            globalMaxTcpWindow.Add();
+                        else
+                            globalMaxTcpWindow.Remove();
+                        break;
+                    case "IRP Stack Size":
+                        IRP_Stack_Size iRP_Stack_Size = new IRP_Stack_Size();
+                        if (OptionList.CheckedItems.Contains(item))
+                            iRP_Stack_Size.Add();
+                        else
+                            iRP_Stack_Size.Remove();
+                        break;
+                    case "Local Priority":
+                        LocalPriority localPriority = new LocalPriority();
+                        if (OptionList.CheckedItems.Contains(item))
+                            localPriority.Add();
+                        else
+                            localPriority.Remove();
+                        break;
+                    case "Max Connect Back Log":
+                        MaxConnectBacklog maxConnectBacklog = new MaxConnectBacklog();
+                        if (OptionList.CheckedItems.Contains(item))
+                            maxConnectBacklog.Add();
+                        else
+                            maxConnectBacklog.Remove();
+                        break;
+                    case "Max Free TCB":
+                        MaxFreeTcbs maxFreeTcbs = new MaxFreeTcbs();
+                        if (OptionList.CheckedItems.Contains(item))
+                            maxFreeTcbs.Add();
+                        else
+                            maxFreeTcbs.Remove();
+                        break;
+                    case "Max User Ports":
+                        MaxUserPort maxUserPort = new MaxUserPort();
+                        if (OptionList.CheckedItems.Contains(item))
+                            maxUserPort.Add();
+                        else
+                            maxUserPort.Remove();
+                        break;
+                    case "Network Throttling":
+                        NetworkThrottlingIndex networkThrottlingIndex = new NetworkThrottlingIndex();
+                        if (OptionList.CheckedItems.Contains(item))
+                            networkThrottlingIndex.Add();
+                        else
+                            networkThrottlingIndex.Remove();
+                        break;
+                    case "Non Best Effort Limit":
+                        NonBestEffortLimit nonBestEffortLimit = new NonBestEffortLimit();
+                        if (OptionList.CheckedItems.Contains(item))
+                            nonBestEffortLimit.Add();
+                        else
+                            nonBestEffortLimit.Remove();
+                        break;
+                    case "TCP OPT":
+                        Tcp1323Opts tcp1323Opts = new Tcp1323Opts();
+                        if (OptionList.CheckedItems.Contains(item))
+                            tcp1323Opts.Add();
+                        else
+                            tcp1323Opts.Remove();
+                        break;
+                    case "TCP Ack Frequency":
+                        TCPackFrequency tCPackFrequency = new TCPackFrequency();
+                        if (OptionList.CheckedItems.Contains(item))
+                            tCPackFrequency.Add();
+                        else
+                            tCPackFrequency.Remove();
+                        break;
+                    case "TCP Timed Wait Delay":
+                        TcpTimedWaitDelay tcpTimedWaitDelay = new TcpTimedWaitDelay();
+                        if (OptionList.CheckedItems.Contains(item))
+                            tcpTimedWaitDelay.Add();
+                        else
+                            tcpTimedWaitDelay.Remove();
+                        break;
+                    default:
+                        MessageBox.Show("We dont have this option,How you find it ?!", "Error");
+                        break;
+                }
             }
+            else
+            {
+                MessageBox.Show(item.ToString() + " Not Selected");
+            }
+
         }
 
         private void RdMan_CheckedChanged(object sender, EventArgs e)
@@ -44,10 +147,12 @@ namespace CS204
             if (rdMan.Checked)
             {
                 btnApply.Enabled = true;
+                OptionList.Enabled = true;
             }
             else
             {
                 btnApply.Enabled = true;
+                OptionList.Enabled = false;
             }
         }
 
@@ -71,8 +176,17 @@ namespace CS204
                     else
                         counter++;
                 }
-                OldPingTimelbl.Text = (totalTime / 10).ToString() + " ms";
-                OldDropPcklbl.Text = counter.ToString();
+                if (changed)
+                {
+                    NewPingtimelbl.Text = (totalTime / 10).ToString() + " ms";
+                    NewDropPcklbl.Text = counter.ToString();
+                }
+                else
+                {
+                    OldPingTimelbl.Text = (totalTime / 10).ToString() + " ms";
+                    OldDropPcklbl.Text = counter.ToString();
+                }
+                
             }
             catch (PingException er)
             {
@@ -124,9 +238,15 @@ namespace CS204
 
         private void OptionList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (OptionList.GetItemChecked(1)) {
+            //CheckedListBox chb = (CheckedListBox)sender;
+            //bool Active =((CheckBox) chb.gets).Checked;
 
-            }
+            //if(Active)
+            //MessageBox.Show((string)chb.SelectedItem);
+            //if (chb.SelectedItem.ToString().Equals("TCP No Delay")) {
+
+
+            //}
         }
     }
 }

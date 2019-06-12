@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainScreen));
             this.rdMan = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rdAuto = new System.Windows.Forms.RadioButton();
@@ -60,11 +61,11 @@
             // rdMan
             // 
             this.rdMan.AutoSize = true;
-            this.rdMan.Location = new System.Drawing.Point(30, 37);
+            this.rdMan.Location = new System.Drawing.Point(12, 77);
             this.rdMan.Margin = new System.Windows.Forms.Padding(6);
             this.rdMan.Name = "rdMan";
             this.rdMan.Size = new System.Drawing.Size(114, 29);
-            this.rdMan.TabIndex = 0;
+            this.rdMan.TabIndex = 1;
             this.rdMan.TabStop = true;
             this.rdMan.Text = "Manual";
             this.rdMan.UseVisualStyleBackColor = true;
@@ -86,11 +87,11 @@
             // rdAuto
             // 
             this.rdAuto.AutoSize = true;
-            this.rdAuto.Location = new System.Drawing.Point(30, 83);
+            this.rdAuto.Location = new System.Drawing.Point(12, 36);
             this.rdAuto.Margin = new System.Windows.Forms.Padding(6);
             this.rdAuto.Name = "rdAuto";
             this.rdAuto.Size = new System.Drawing.Size(138, 29);
-            this.rdAuto.TabIndex = 1;
+            this.rdAuto.TabIndex = 0;
             this.rdAuto.TabStop = true;
             this.rdAuto.Text = "Automatic";
             this.rdAuto.UseVisualStyleBackColor = true;
@@ -275,17 +276,26 @@
             // 
             // OptionList
             // 
+            this.OptionList.CheckOnClick = true;
             this.OptionList.FormattingEnabled = true;
             this.OptionList.Items.AddRange(new object[] {
             "TCP No Delay",
-            "Option 2",
-            "Option 3"});
+            "TCP Window Size",
+            "IRP Stack Size",
+            "Local Priority",
+            "Max Connect Back Log",
+            "Max Free TCB",
+            "Max User Ports",
+            "Network Throttling",
+            "Non Best Effort Limit",
+            "TCP OPT",
+            "TCP Ack Frequency",
+            "TCP Timed Wait Delay"});
             this.OptionList.Location = new System.Drawing.Point(12, 33);
             this.OptionList.Margin = new System.Windows.Forms.Padding(6);
             this.OptionList.Name = "OptionList";
             this.OptionList.Size = new System.Drawing.Size(450, 200);
             this.OptionList.TabIndex = 5;
-            this.OptionList.SelectedIndexChanged += new System.EventHandler(this.OptionList_SelectedIndexChanged);
             // 
             // groupBox5
             // 
@@ -316,6 +326,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnApply);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "MainScreen";
             this.Text = "Better Connection";
