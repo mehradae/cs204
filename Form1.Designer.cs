@@ -34,14 +34,9 @@
             this.rdAuto = new System.Windows.Forms.RadioButton();
             this.btnApply = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.IpLable = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.NewPingtimelbl = new System.Windows.Forms.Label();
-            this.NewDropPcklbl = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.OldDropPcklbl = new System.Windows.Forms.Label();
             this.OldPingTimelbl = new System.Windows.Forms.Label();
@@ -51,6 +46,8 @@
             this.OptionList = new System.Windows.Forms.CheckedListBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.OldJitter = new System.Windows.Forms.Label();
+            this.PingHistory = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -110,18 +107,28 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.groupBox4);
             this.groupBox2.Controls.Add(this.IpLable);
             this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.groupBox4);
             this.groupBox2.Controls.Add(this.groupBox3);
             this.groupBox2.Location = new System.Drawing.Point(24, 331);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(6);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(6);
-            this.groupBox2.Size = new System.Drawing.Size(766, 512);
+            this.groupBox2.Size = new System.Drawing.Size(1311, 512);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Ping Results";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.PingHistory);
+            this.groupBox4.Location = new System.Drawing.Point(375, 96);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(896, 404);
+            this.groupBox4.TabIndex = 9;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Result History";
             // 
             // IpLable
             // 
@@ -142,74 +149,9 @@
             this.label7.TabIndex = 2;
             this.label7.Text = "Your IP address:";
             // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.NewPingtimelbl);
-            this.groupBox4.Controls.Add(this.NewDropPcklbl);
-            this.groupBox4.Controls.Add(this.label6);
-            this.groupBox4.Controls.Add(this.label4);
-            this.groupBox4.Controls.Add(this.label2);
-            this.groupBox4.Location = new System.Drawing.Point(366, 96);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(6);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(6);
-            this.groupBox4.Size = new System.Drawing.Size(388, 404);
-            this.groupBox4.TabIndex = 1;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "After";
-            // 
-            // NewPingtimelbl
-            // 
-            this.NewPingtimelbl.AutoSize = true;
-            this.NewPingtimelbl.Location = new System.Drawing.Point(262, 60);
-            this.NewPingtimelbl.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.NewPingtimelbl.Name = "NewPingtimelbl";
-            this.NewPingtimelbl.Size = new System.Drawing.Size(113, 25);
-            this.NewPingtimelbl.TabIndex = 6;
-            this.NewPingtimelbl.Text = "Loading ...";
-            // 
-            // NewDropPcklbl
-            // 
-            this.NewDropPcklbl.AutoSize = true;
-            this.NewDropPcklbl.Location = new System.Drawing.Point(262, 112);
-            this.NewDropPcklbl.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.NewDropPcklbl.Name = "NewDropPcklbl";
-            this.NewDropPcklbl.Size = new System.Drawing.Size(24, 25);
-            this.NewDropPcklbl.TabIndex = 5;
-            this.NewDropPcklbl.Text = "0";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 162);
-            this.label6.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(71, 25);
-            this.label6.TabIndex = 3;
-            this.label6.Text = "Jitter: ";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 112);
-            this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(171, 25);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "Droped Packets:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 60);
-            this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(67, 25);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Ping: ";
-            // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.OldJitter);
             this.groupBox3.Controls.Add(this.OldDropPcklbl);
             this.groupBox3.Controls.Add(this.OldPingTimelbl);
             this.groupBox3.Controls.Add(this.label5);
@@ -222,7 +164,7 @@
             this.groupBox3.Size = new System.Drawing.Size(340, 404);
             this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Before";
+            this.groupBox3.Text = "Current Results";
             // 
             // OldDropPcklbl
             // 
@@ -311,10 +253,30 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(799, 348);
+            this.progressBar1.Location = new System.Drawing.Point(787, 113);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(548, 47);
             this.progressBar1.TabIndex = 7;
+            // 
+            // OldJitter
+            // 
+            this.OldJitter.AutoSize = true;
+            this.OldJitter.Location = new System.Drawing.Point(214, 162);
+            this.OldJitter.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.OldJitter.Name = "OldJitter";
+            this.OldJitter.Size = new System.Drawing.Size(24, 25);
+            this.OldJitter.TabIndex = 5;
+            this.OldJitter.Text = "0";
+            // 
+            // PingHistory
+            // 
+            this.PingHistory.BackColor = System.Drawing.SystemColors.Control;
+            this.PingHistory.FormattingEnabled = true;
+            this.PingHistory.ItemHeight = 25;
+            this.PingHistory.Location = new System.Drawing.Point(6, 45);
+            this.PingHistory.Name = "PingHistory";
+            this.PingHistory.Size = new System.Drawing.Size(884, 329);
+            this.PingHistory.TabIndex = 8;
             // 
             // MainScreen
             // 
@@ -330,12 +292,12 @@
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "MainScreen";
             this.Text = "Better Connection";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainScreen_FormClosing);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox5.ResumeLayout(false);
@@ -350,23 +312,20 @@
         private System.Windows.Forms.RadioButton rdAuto;
         private System.Windows.Forms.Button btnApply;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckedListBox OptionList;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.Label IpLable;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label OldPingTimelbl;
-        private System.Windows.Forms.Label NewPingtimelbl;
-        private System.Windows.Forms.Label NewDropPcklbl;
         private System.Windows.Forms.Label OldDropPcklbl;
         private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Label IpLable;
+        private System.Windows.Forms.Label OldJitter;
+        private System.Windows.Forms.ListBox PingHistory;
     }
 }
 

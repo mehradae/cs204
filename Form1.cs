@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Net;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
@@ -8,12 +9,51 @@ namespace CS204
 {
     public partial class MainScreen : Form
     {
-        bool changed = false;
+        string setting = "";
         public MainScreen()
         {
             InitializeComponent();
             IpLable.Text = GetLocalIPAddress();
-            PingHost("4.2.2.4");
+            PingHost("www.yahoo.co.jp");
+
+
+            FileHandler(false);
+        }
+
+        private void FileHandler(bool status)
+        {
+
+            try
+            {
+                string path = "C:\\data.txt";
+
+                if (status)
+                {
+                    StreamWriter st;
+                    st = File.Exists(path) ? File.AppendText(path) : new StreamWriter(path);
+
+
+                    st.WriteLine(DateTime.Now + " -- " + OldPingTimelbl.Text
+                        + " ms -- " + OldDropPcklbl.Text + " dropped -- " + setting);
+                    st.Flush();
+                    st.Close();
+                }
+                else
+                {
+                    StreamReader sr = new StreamReader(path);
+                    string line;
+                    while ((line=sr.ReadLine())!=null)
+                    {
+                        PingHistory.Items.Add(line);
+                    }
+                    
+                }
+            }
+            catch(IOException ex)
+            {
+                MessageBox.Show(ex.ToString(), "File Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void BtnApply_Click(object sender, EventArgs e)
@@ -21,9 +61,9 @@ namespace CS204
 
             foreach (object item in OptionList.Items){
 
-                EffectApply(item);
+                //EffectApply(item);
+               
 
-                
             }
 
             //try
@@ -41,105 +81,133 @@ namespace CS204
 
         private void EffectApply(object item)
         {
-            if (OptionList.CheckedItems.Contains(item))
-            {
                 MessageBox.Show(item.ToString());
                 switch (item)
                 {
                     case "TCP No Delay":
                         TCP_no_delay tCP_No_Delay = new TCP_no_delay();
-                        if (OptionList.CheckedItems.Contains(item))
-                            tCP_No_Delay.Add();
-                        else
-                            tCP_No_Delay.Remove();
+                    if (OptionList.CheckedItems.Contains(item))
+                    {
+                        tCP_No_Delay.Add();
+                        _ = setting == "" ? setting += "1" : setting += ",1";
+                    }
+                    else
+                        tCP_No_Delay.Remove();
                         break;
                     case "TCP Window Size":
                         GlobalMaxTcpWindowSize globalMaxTcpWindow = new GlobalMaxTcpWindowSize();
-                        if (OptionList.CheckedItems.Contains(item))
-                            globalMaxTcpWindow.Add();
-                        else
-                            globalMaxTcpWindow.Remove();
+                    if (OptionList.CheckedItems.Contains(item))
+                    {
+                        globalMaxTcpWindow.Add();
+                        _ = setting == "" ? setting += "2" : setting += ",2";
+                    }
+                    else
+                        globalMaxTcpWindow.Remove();
                         break;
                     case "IRP Stack Size":
                         IRP_Stack_Size iRP_Stack_Size = new IRP_Stack_Size();
-                        if (OptionList.CheckedItems.Contains(item))
-                            iRP_Stack_Size.Add();
-                        else
-                            iRP_Stack_Size.Remove();
+                    if (OptionList.CheckedItems.Contains(item))
+                    {
+                        iRP_Stack_Size.Add();
+                        _ = setting == "" ? setting += "3" : setting += ",3";
+                    }
+                    else
+                        iRP_Stack_Size.Remove();
                         break;
                     case "Local Priority":
                         LocalPriority localPriority = new LocalPriority();
-                        if (OptionList.CheckedItems.Contains(item))
-                            localPriority.Add();
-                        else
-                            localPriority.Remove();
+                    if (OptionList.CheckedItems.Contains(item))
+                    {
+                        localPriority.Add();
+                        _ = setting == "" ? setting += "4" : setting += ",4";
+                    }
+                    else
+                        localPriority.Remove();
                         break;
                     case "Max Connect Back Log":
                         MaxConnectBacklog maxConnectBacklog = new MaxConnectBacklog();
-                        if (OptionList.CheckedItems.Contains(item))
-                            maxConnectBacklog.Add();
-                        else
-                            maxConnectBacklog.Remove();
+                    if (OptionList.CheckedItems.Contains(item))
+                    {
+                        maxConnectBacklog.Add();
+                        _ = setting == "" ? setting += "5" : setting += ",5";
+                    }
+                    else
+                        maxConnectBacklog.Remove();
                         break;
                     case "Max Free TCB":
                         MaxFreeTcbs maxFreeTcbs = new MaxFreeTcbs();
-                        if (OptionList.CheckedItems.Contains(item))
-                            maxFreeTcbs.Add();
-                        else
-                            maxFreeTcbs.Remove();
+                    if (OptionList.CheckedItems.Contains(item))
+                    {
+                        maxFreeTcbs.Add();
+                        _ = setting == "" ? setting += "6" : setting += ",6";
+                    }
+                    else
+                        maxFreeTcbs.Remove();
                         break;
                     case "Max User Ports":
                         MaxUserPort maxUserPort = new MaxUserPort();
-                        if (OptionList.CheckedItems.Contains(item))
-                            maxUserPort.Add();
-                        else
-                            maxUserPort.Remove();
+                    if (OptionList.CheckedItems.Contains(item))
+                    {
+                        maxUserPort.Add();
+                        _ = setting == "" ? setting += "7" : setting += ",7";
+                    }
+                    else
+                        maxUserPort.Remove();
                         break;
                     case "Network Throttling":
                         NetworkThrottlingIndex networkThrottlingIndex = new NetworkThrottlingIndex();
-                        if (OptionList.CheckedItems.Contains(item))
-                            networkThrottlingIndex.Add();
-                        else
-                            networkThrottlingIndex.Remove();
+                    if (OptionList.CheckedItems.Contains(item))
+                    {
+                        networkThrottlingIndex.Add();
+                        _ = setting == "" ? setting += "8" : setting += ",8";
+                    }
+                    else
+                        networkThrottlingIndex.Remove();
                         break;
                     case "Non Best Effort Limit":
                         NonBestEffortLimit nonBestEffortLimit = new NonBestEffortLimit();
-                        if (OptionList.CheckedItems.Contains(item))
-                            nonBestEffortLimit.Add();
-                        else
-                            nonBestEffortLimit.Remove();
+                    if (OptionList.CheckedItems.Contains(item))
+                    {
+                        nonBestEffortLimit.Add();
+                        _ = setting == "" ? setting += "9" : setting += ",9";
+                    }
+                    else
+                        nonBestEffortLimit.Remove();
                         break;
                     case "TCP OPT":
                         Tcp1323Opts tcp1323Opts = new Tcp1323Opts();
-                        if (OptionList.CheckedItems.Contains(item))
-                            tcp1323Opts.Add();
-                        else
-                            tcp1323Opts.Remove();
+                    if (OptionList.CheckedItems.Contains(item))
+                    {
+                        tcp1323Opts.Add();
+                        _ = setting == "" ? setting += "10" : setting += ",10";
+                    }
+                    else
+                        tcp1323Opts.Remove();
                         break;
                     case "TCP Ack Frequency":
                         TCPackFrequency tCPackFrequency = new TCPackFrequency();
-                        if (OptionList.CheckedItems.Contains(item))
-                            tCPackFrequency.Add();
-                        else
-                            tCPackFrequency.Remove();
+                    if (OptionList.CheckedItems.Contains(item))
+                    {
+                        tCPackFrequency.Add();
+                        _ = setting == "" ? setting += "11" : setting += ",11";
+                    }
+                    else
+                        tCPackFrequency.Remove();
                         break;
                     case "TCP Timed Wait Delay":
                         TcpTimedWaitDelay tcpTimedWaitDelay = new TcpTimedWaitDelay();
-                        if (OptionList.CheckedItems.Contains(item))
-                            tcpTimedWaitDelay.Add();
-                        else
-                            tcpTimedWaitDelay.Remove();
+                    if (OptionList.CheckedItems.Contains(item))
+                    {
+                        tcpTimedWaitDelay.Add();
+                        _ = setting == "" ? setting += "12" : setting += ",12";
+                    }
+                    else
+                        tcpTimedWaitDelay.Remove();
                         break;
                     default:
                         MessageBox.Show("We dont have this option,How you find it ?!", "Error");
                         break;
                 }
-            }
-            else
-            {
-                MessageBox.Show(item.ToString() + " Not Selected");
-            }
-
         }
 
         private void RdMan_CheckedChanged(object sender, EventArgs e)
@@ -166,32 +234,39 @@ namespace CS204
                 pinger = new Ping();
                 long totalTime = 0;
                 int counter = 0;
+                int jitter_counter = 0;
+                long temp = 0;
+                long jitter = 0;
                 for (int i = 0; i < 10; i++)
                 {
                     PingReply reply = pinger.Send(host, 120);
                     if (reply.Status == IPStatus.Success)
                     {
+                        if (temp == 0)
+                            temp = reply.RoundtripTime;
+                        else
+                        {
+                            jitter+=Math.Abs(temp - reply.RoundtripTime);
+                            if (jitter != 0)
+                                jitter_counter++;
+                        }
+
                         totalTime += reply.RoundtripTime;
                     }
                     else
                         counter++;
                 }
-                if (changed)
-                {
-                    NewPingtimelbl.Text = (totalTime / 10).ToString() + " ms";
-                    NewDropPcklbl.Text = counter.ToString();
-                }
-                else
-                {
-                    OldPingTimelbl.Text = (totalTime / 10).ToString() + " ms";
-                    OldDropPcklbl.Text = counter.ToString();
-                }
+           
+                OldPingTimelbl.Text = (totalTime / 10).ToString() + " ms";
+                OldDropPcklbl.Text = counter.ToString();
+                OldJitter.Text = (jitter / jitter_counter).ToString() + " ms";
+                
                 
             }
             catch (PingException er)
             {
                 OldPingTimelbl.Text = "An Error Occurred!";
-                MessageBox.Show("Error", er.Message);
+                MessageBox.Show(er.Message,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
             finally
             {
@@ -215,38 +290,33 @@ namespace CS204
             throw new Exception("No network adapters with an IPv4 address in the system!");
         }
 
-//        private void ReducePing()
-//        {
-//            //const string userRoot = "HKEY_LOCAL_MACHINE";
-//            //const string subkey = "RegistrySetValueExample";
-//            //const string keyName = userRoot + "\\" + subkey;
-//            //string[] path = Registry.LocalMachine.;
-//            using (var hklm = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64))
-//            using (RegistryKey mykey = hklm.OpenSubKey(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile", true))
-//            {
-//                if (mykey != null)
-//                {
-//                    MessageBox.Show("Its working");
-//                    mykey.SetValue("NetworkThrottlingIndex", Int32.MaxValue, RegistryValueKind.DWord);
-//                    mykey.Close();
-//                }
-//            }
-//
-//               
-//
-//        }
-
-        private void OptionList_SelectedIndexChanged(object sender, EventArgs e)
+        private void MainScreen_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //CheckedListBox chb = (CheckedListBox)sender;
-            //bool Active =((CheckBox) chb.gets).Checked;
 
-            //if(Active)
-            //MessageBox.Show((string)chb.SelectedItem);
-            //if (chb.SelectedItem.ToString().Equals("TCP No Delay")) {
-
-
-            //}
+            FileHandler(true);
+            
         }
+
+        //        private void ReducePing()
+        //        {
+        //            //const string userRoot = "HKEY_LOCAL_MACHINE";
+        //            //const string subkey = "RegistrySetValueExample";
+        //            //const string keyName = userRoot + "\\" + subkey;
+        //            //string[] path = Registry.LocalMachine.;
+        //            using (var hklm = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64))
+        //            using (RegistryKey mykey = hklm.OpenSubKey(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile", true))
+        //            {
+        //                if (mykey != null)
+        //                {
+        //                    MessageBox.Show("Its working");
+        //                    mykey.SetValue("NetworkThrottlingIndex", Int32.MaxValue, RegistryValueKind.DWord);
+        //                    mykey.Close();
+        //                }
+        //            }
+        //
+        //               
+        //
+        //        }
+
     }
 }
