@@ -18,8 +18,14 @@ namespace CS204 {
 
         public void Remove() {
             using (RegistryKey key = Registry.LocalMachine.OpenSubKey(path, true)) {
-                key?.DeleteSubKey("Psched");
-                key?.Close();
+                foreach(object item in key?.GetSubKeyNames())
+                {
+                    if (item.Equals("Psched"))
+                    {
+                        key?.DeleteSubKey("Psched");
+                        key?.Close();
+                    }
+                }                
             }
         }
     }

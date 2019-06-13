@@ -35,9 +35,11 @@
             this.btnApply = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.PingHistory = new System.Windows.Forms.ListBox();
             this.IpLable = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.OldJitter = new System.Windows.Forms.Label();
             this.OldDropPcklbl = new System.Windows.Forms.Label();
             this.OldPingTimelbl = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -46,8 +48,6 @@
             this.OptionList = new System.Windows.Forms.CheckedListBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.OldJitter = new System.Windows.Forms.Label();
-            this.PingHistory = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -58,7 +58,7 @@
             // rdMan
             // 
             this.rdMan.AutoSize = true;
-            this.rdMan.Location = new System.Drawing.Point(12, 77);
+            this.rdMan.Location = new System.Drawing.Point(12, 33);
             this.rdMan.Margin = new System.Windows.Forms.Padding(6);
             this.rdMan.Name = "rdMan";
             this.rdMan.Size = new System.Drawing.Size(114, 29);
@@ -84,7 +84,7 @@
             // rdAuto
             // 
             this.rdAuto.AutoSize = true;
-            this.rdAuto.Location = new System.Drawing.Point(12, 36);
+            this.rdAuto.Location = new System.Drawing.Point(12, 66);
             this.rdAuto.Margin = new System.Windows.Forms.Padding(6);
             this.rdAuto.Name = "rdAuto";
             this.rdAuto.Size = new System.Drawing.Size(138, 29);
@@ -115,7 +115,7 @@
             this.groupBox2.Margin = new System.Windows.Forms.Padding(6);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(6);
-            this.groupBox2.Size = new System.Drawing.Size(1311, 512);
+            this.groupBox2.Size = new System.Drawing.Size(1561, 512);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Ping Results";
@@ -125,10 +125,20 @@
             this.groupBox4.Controls.Add(this.PingHistory);
             this.groupBox4.Location = new System.Drawing.Point(375, 96);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(896, 404);
+            this.groupBox4.Size = new System.Drawing.Size(1177, 404);
             this.groupBox4.TabIndex = 9;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Result History";
+            // 
+            // PingHistory
+            // 
+            this.PingHistory.BackColor = System.Drawing.SystemColors.Control;
+            this.PingHistory.FormattingEnabled = true;
+            this.PingHistory.ItemHeight = 25;
+            this.PingHistory.Location = new System.Drawing.Point(6, 45);
+            this.PingHistory.Name = "PingHistory";
+            this.PingHistory.Size = new System.Drawing.Size(1165, 329);
+            this.PingHistory.TabIndex = 8;
             // 
             // IpLable
             // 
@@ -165,6 +175,16 @@
             this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Current Results";
+            // 
+            // OldJitter
+            // 
+            this.OldJitter.AutoSize = true;
+            this.OldJitter.Location = new System.Drawing.Point(214, 162);
+            this.OldJitter.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.OldJitter.Name = "OldJitter";
+            this.OldJitter.Size = new System.Drawing.Size(24, 25);
+            this.OldJitter.TabIndex = 5;
+            this.OldJitter.Text = "0";
             // 
             // OldDropPcklbl
             // 
@@ -258,31 +278,11 @@
             this.progressBar1.Size = new System.Drawing.Size(548, 47);
             this.progressBar1.TabIndex = 7;
             // 
-            // OldJitter
-            // 
-            this.OldJitter.AutoSize = true;
-            this.OldJitter.Location = new System.Drawing.Point(214, 162);
-            this.OldJitter.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.OldJitter.Name = "OldJitter";
-            this.OldJitter.Size = new System.Drawing.Size(24, 25);
-            this.OldJitter.TabIndex = 5;
-            this.OldJitter.Text = "0";
-            // 
-            // PingHistory
-            // 
-            this.PingHistory.BackColor = System.Drawing.SystemColors.Control;
-            this.PingHistory.FormattingEnabled = true;
-            this.PingHistory.ItemHeight = 25;
-            this.PingHistory.Location = new System.Drawing.Point(6, 45);
-            this.PingHistory.Name = "PingHistory";
-            this.PingHistory.Size = new System.Drawing.Size(884, 329);
-            this.PingHistory.TabIndex = 8;
-            // 
             // MainScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1600, 865);
+            this.ClientSize = new System.Drawing.Size(1701, 865);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox2);

@@ -22,8 +22,11 @@ namespace CS204 {
 
         public void Remove() {
             using (RegistryKey key = Registry.LocalMachine.OpenSubKey(path, true)) {
-                key?.DeleteValue("Tcp1323Opts");
-                key?.Close();
+                if (key?.GetValue("Tcp1323Opts")!= null)
+                {
+                    key?.DeleteValue("Tcp1323Opts");
+                    key?.Close();
+                }
             }
         }
    

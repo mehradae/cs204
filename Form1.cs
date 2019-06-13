@@ -12,6 +12,7 @@ namespace CS204
         string setting = "";
         public MainScreen()
         {
+
             InitializeComponent();
             IpLable.Text = GetLocalIPAddress();
             PingHost("www.yahoo.co.jp");
@@ -33,20 +34,24 @@ namespace CS204
                     st = File.Exists(path) ? File.AppendText(path) : new StreamWriter(path);
 
 
-                    st.WriteLine(DateTime.Now + " -- " + OldPingTimelbl.Text
-                        + " ms -- " + OldDropPcklbl.Text + " dropped -- " + setting);
+                    st.WriteLine(DateTime.Now + " -- ping: " + OldPingTimelbl.Text
+                        + " -- dropped packets: " + OldDropPcklbl.Text 
+                        + " -- Jitter: " +OldJitter.Text +" -- Applied Setting: "+ setting);
                     st.Flush();
                     st.Close();
                 }
                 else
                 {
-                    StreamReader sr = new StreamReader(path);
-                    string line;
-                    while ((line=sr.ReadLine())!=null)
+                    if (File.Exists(path))
                     {
-                        PingHistory.Items.Add(line);
+                        StreamReader sr = new StreamReader(path);
+                        string line;
+                        while ((line = sr.ReadLine()) != null)
+                        {
+                            PingHistory.Items.Add(line);
+                        }
+                        sr.Close();
                     }
-                    
                 }
             }
             catch(IOException ex)
@@ -58,30 +63,30 @@ namespace CS204
 
         private void BtnApply_Click(object sender, EventArgs e)
         {
-
+            progressBar1.Value = 10;
             foreach (object item in OptionList.Items){
 
-                //EffectApply(item);
-               
+                
+                try
+                {
+                    EffectApply(item);
+                    progressBar1.Value = 100;
+                }
+                catch (Exception er)
+                {
+                    MessageBox.Show(er.Message);
+                }
 
             }
+            MessageBox.Show("All changes has been applied!", "All Done"
+                       , MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            //try
-            //{
-            //    progressBar1.Value = 10;
-            //    new TCP_no_delay().Remove();
-            //    progressBar1.Value = 20;
-            //    ReducePing();
-            //}
-            //catch (Exception er)
-            //{
-            //    MessageBox.Show(er.Message);
-            //}
+
         }
 
         private void EffectApply(object item)
         {
-                MessageBox.Show(item.ToString());
+                
                 switch (item)
                 {
                     case "TCP No Delay":
@@ -259,7 +264,10 @@ namespace CS204
            
                 OldPingTimelbl.Text = (totalTime / 10).ToString() + " ms";
                 OldDropPcklbl.Text = counter.ToString();
-                OldJitter.Text = (jitter / jitter_counter).ToString() + " ms";
+                if (jitter_counter != 0)
+                    OldJitter.Text = (jitter / jitter_counter).ToString() + " ms";
+                else
+                    OldJitter.Text = "0";
                 
                 
             }
@@ -296,27 +304,6 @@ namespace CS204
             FileHandler(true);
             
         }
-
-        //        private void ReducePing()
-        //        {
-        //            //const string userRoot = "HKEY_LOCAL_MACHINE";
-        //            //const string subkey = "RegistrySetValueExample";
-        //            //const string keyName = userRoot + "\\" + subkey;
-        //            //string[] path = Registry.LocalMachine.;
-        //            using (var hklm = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64))
-        //            using (RegistryKey mykey = hklm.OpenSubKey(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile", true))
-        //            {
-        //                if (mykey != null)
-        //                {
-        //                    MessageBox.Show("Its working");
-        //                    mykey.SetValue("NetworkThrottlingIndex", Int32.MaxValue, RegistryValueKind.DWord);
-        //                    mykey.Close();
-        //                }
-        //            }
-        //
-        //               
-        //
-        //        }
 
     }
 }
