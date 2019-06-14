@@ -96,10 +96,10 @@
             // btnApply
             // 
             this.btnApply.Enabled = false;
-            this.btnApply.Location = new System.Drawing.Point(992, 60);
+            this.btnApply.Location = new System.Drawing.Point(1031, 60);
             this.btnApply.Margin = new System.Windows.Forms.Padding(6);
             this.btnApply.Name = "btnApply";
-            this.btnApply.Size = new System.Drawing.Size(150, 44);
+            this.btnApply.Size = new System.Drawing.Size(332, 44);
             this.btnApply.TabIndex = 3;
             this.btnApply.Text = "Apply";
             this.btnApply.UseVisualStyleBackColor = true;
@@ -275,7 +275,7 @@
             // 
             this.progressBar1.Location = new System.Drawing.Point(787, 113);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(548, 47);
+            this.progressBar1.Size = new System.Drawing.Size(798, 47);
             this.progressBar1.TabIndex = 7;
             // 
             // MainScreen

@@ -34,7 +34,7 @@ namespace CS204
                     st = File.Exists(path) ? File.AppendText(path) : new StreamWriter(path);
 
 
-                    st.WriteLine(DateTime.Now + " -- ping: " + OldPingTimelbl.Text
+                    st.WriteLine(DateTime.Now.AddHours(1) + " -- ping: " + OldPingTimelbl.Text
                         + " -- dropped packets: " + OldDropPcklbl.Text 
                         + " -- Jitter: " +OldJitter.Text +" -- Applied Setting: "+ setting);
                     st.Flush();
@@ -262,7 +262,7 @@ namespace CS204
                         counter++;
                 }
            
-                OldPingTimelbl.Text = (totalTime / 10).ToString() + " ms";
+                OldPingTimelbl.Text = ((totalTime / 10)).ToString() + " ms";
                 OldDropPcklbl.Text = counter.ToString();
                 if (jitter_counter != 0)
                     OldJitter.Text = (jitter / jitter_counter).ToString() + " ms";
